@@ -1,4 +1,14 @@
 .desks-Kanji {
-  text-align: center;
-  color: #333;
+  & .content {
+    text-align: center;
+    color: #333;
+
+    &:not(.active) {
+      opacity: 0;
+    }
+
+    &.active {
+      transition: 0.3s;
+    }
+  }
 }

@@ -8,15 +8,18 @@
     grid-template-rows: 1fr;
   }
 
-  & .inner {
+  & > .inner {
     min-height: 0;
 
-    & .content {
+    & > .content {
       padding: 10px 15px;
       border-top-right-radius: 15px;
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
       background-color: #ddd;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   }
 }

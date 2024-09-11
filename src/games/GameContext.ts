@@ -5,8 +5,8 @@ export const GameContext = createContext<{
   currentWord: Word;
   setCurrentWord: Dispatch<SetStateAction<Word>>;
 
-  currentActive: boolean;
-  setCurrentActive: Dispatch<SetStateAction<boolean>>;
+  currentShown: boolean;
+  setCurrentShown: Dispatch<SetStateAction<boolean>>;
 
   nextWords: Word[];
   setNextWords: Dispatch<SetStateAction<Word[]>>;
@@ -21,8 +21,8 @@ export const GameContext = createContext<{
   },
   setCurrentWord: () => {},
 
-  currentActive: false,
-  setCurrentActive: () => {},
+  currentShown: false,
+  setCurrentShown: () => {},
 
   nextWords: [] as Word[],
   setNextWords: () => {},

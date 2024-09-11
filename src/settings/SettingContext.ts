@@ -10,14 +10,20 @@ export const SettingContext = createContext<{
   setHintHiragana: (hintHiragana: boolean) => void;
   hintMeaning: boolean;
   setHintMeaning: (hintMeaning: boolean) => void;
+
+  randomOrder: boolean;
+  setRandomOrder: (randomOrder: boolean) => void;
 }>({
   active: false,
   setActive: () => {},
 
-  hintKanji: false,
+  hintKanji: true,
   setHintKanji: () => {},
   hintHiragana: false,
   setHintHiragana: () => {},
-  hintMeaning: false,
+  hintMeaning: true,
   setHintMeaning: () => {},
+
+  randomOrder: true,
+  setRandomOrder: () => {},
 });

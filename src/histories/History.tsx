@@ -8,8 +8,8 @@ export function History() {
 
   return (
     <div className="histories-History">
-      {oldWords.map((word) => (
-        <Line word={word} />
+      {oldWords.map((word, index) => (
+        <Line key={index} word={word} />
       ))}
     </div>
   );

@@ -5,7 +5,7 @@ import { Word } from "./word";
 
 export function GameContainer({ children }: Props) {
   const [currentWord, setCurrentWord] = useState<Word>(() => n2Verbs[0]);
-  const [currentActive, setCurrentActive] = useState<boolean>(() => false);
+  const [currentShown, setCurrentShown] = useState<boolean>(() => false);
 
   const [nextWords, setNextWords] = useState<Word[]>(() => n2Verbs.slice(1));
 
@@ -17,14 +17,14 @@ export function GameContainer({ children }: Props) {
         () => ({
           currentWord,
           setCurrentWord,
-          currentActive,
-          setCurrentActive,
+          currentShown,
+          setCurrentShown,
           nextWords,
           setNextWords,
           oldWords,
           setOldWords,
         }),
-        [currentActive, currentWord, nextWords, oldWords]
+        [currentShown, currentWord, nextWords, oldWords]
       )}
     >
       {children}

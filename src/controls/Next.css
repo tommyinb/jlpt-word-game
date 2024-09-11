@@ -20,6 +20,10 @@
     background-size: contain;
   }
 
+  &.active {
+    background-color: #72bbff;
+  }
+
   &:active {
     background-color: #53acff;
   }

@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <GameContainer>
         <SettingContainer>
-          <h1>JLPT Word Game</h1>
+          <h1>JLPT 単語</h1>
 
           <Desk />
           <Control className="control" />

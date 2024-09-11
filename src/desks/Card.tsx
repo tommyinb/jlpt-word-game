@@ -7,14 +7,17 @@ export function Card({
   active: cardActive,
   setActive: setCardActive,
 }: Props) {
-  const { active: settingActive, setActive: setSettingActive } =
-    useContext(SettingContext);
+  const {
+    active: settingActive,
+    setActive: setSettingActive,
+    hintHiragana,
+  } = useContext(SettingContext);
 
   return (
     <div
-      className={`desks-Card ${cardActive ? "active" : ""}`}
+      className={`desks-Card ${cardActive || hintHiragana ? "active" : ""}`}
       onClick={() => {
-        if (!cardActive) {
+        if (!cardActive && !hintHiragana) {
           setCardActive(true);
 
           if (settingActive) {

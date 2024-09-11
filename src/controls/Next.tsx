@@ -7,26 +7,38 @@ export function Next() {
   const {
     currentWord,
     setCurrentWord,
-    currentActive,
-    setCurrentActive,
+    currentShown: gameShown,
+    setCurrentShown: setGameShown,
     nextWords,
     setNextWords,
     oldWords,
     setOldWords,
   } = useContext(GameContext);
 
-  const { active: settingActive, setActive: setSettingActive } =
-    useContext(SettingContext);
+  const {
+    active: settingActive,
+    setActive: setSettingActive,
+    hintKanji,
+    hintHiragana,
+    hintMeaning,
+    randomOrder,
+  } = useContext(SettingContext);
 
   return (
     <div
-      className="controls-Next"
+      className={`controls-Next ${gameShown ? "active" : ""}`}
       onClick={() => {
-        if (currentActive) {
-          const nextIndex = Math.floor(Math.random() * nextWords.length);
+        if (gameShown) {
+          const nextIndex = randomOrder
+            ? Math.floor(Math.random() * nextWords.length)
+            : 0;
 
-          setCurrentWord(nextWords[nextIndex]);
-          setCurrentActive(false);
+          const nextWord = nextWords[nextIndex];
+          setCurrentWord(nextWord);
+
+          setGameShown(
+            (hintKanji || !nextWord.hiragana) && hintHiragana && hintMeaning
+          );
 
           setNextWords([
             ...nextWords.slice(0, nextIndex),
@@ -35,7 +47,7 @@ export function Next() {
 
           setOldWords([...oldWords, currentWord]);
         } else {
-          setCurrentActive(true);
+          setGameShown(true);
         }
 
         if (settingActive) {

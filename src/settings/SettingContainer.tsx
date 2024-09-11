@@ -4,9 +4,11 @@ import { SettingContext } from "./SettingContext";
 export function SettingContainer({ children }: Props) {
   const [active, setActive] = useState(false);
 
-  const [hintKanji, setHintKanji] = useState(false);
+  const [hintKanji, setHintKanji] = useState(true);
   const [hintHiragana, setHintHiragana] = useState(false);
-  const [hintMeaning, setHintMeaning] = useState(false);
+  const [hintMeaning, setHintMeaning] = useState(true);
+
+  const [randomOrder, setRandomOrder] = useState(true);
 
   return (
     <SettingContext.Provider
@@ -20,8 +22,10 @@ export function SettingContainer({ children }: Props) {
           setHintHiragana,
           hintMeaning,
           setHintMeaning,
+          randomOrder,
+          setRandomOrder,
         }),
-        [active, hintHiragana, hintKanji, hintMeaning]
+        [active, hintHiragana, hintKanji, hintMeaning, randomOrder]
       )}
     >
       {children}
