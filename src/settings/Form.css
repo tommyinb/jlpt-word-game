@@ -1,0 +1,22 @@
+.settings-Form {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s;
+  overflow: hidden;
+
+  &.active {
+    grid-template-rows: 1fr;
+  }
+
+  & .inner {
+    min-height: 0;
+
+    & .content {
+      padding: 10px 15px;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      background-color: #ddd;
+    }
+  }
+}

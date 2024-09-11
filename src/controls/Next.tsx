@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GameContext } from "../games/GameContext";
+import { SettingContext } from "../settings/SettingContext";
 import "./Next.css";
 
 export function Next() {
@@ -13,6 +14,9 @@ export function Next() {
     oldWords,
     setOldWords,
   } = useContext(GameContext);
+
+  const { active: settingActive, setActive: setSettingActive } =
+    useContext(SettingContext);
 
   return (
     <div
@@ -32,6 +36,10 @@ export function Next() {
           setOldWords([...oldWords, currentWord]);
         } else {
           setCurrentActive(true);
+        }
+
+        if (settingActive) {
+          setSettingActive(false);
         }
       }}
     >

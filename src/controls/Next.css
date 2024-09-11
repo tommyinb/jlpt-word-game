@@ -19,4 +19,8 @@
     background-image: url("./triangle.svg");
     background-size: contain;
   }
+
+  &:active {
+    background-color: #53acff;
+  }
 }

@@ -1,4 +1,8 @@
 .controls-Control {
   display: flex;
-  justify-content: flex-end;
+  gap: 30px;
+
+  & .setting {
+    flex: 1;
+  }
 }

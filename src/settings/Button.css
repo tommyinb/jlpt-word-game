@@ -1,0 +1,33 @@
+.settings-Button {
+  height: 30px;
+  box-sizing: border-box;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #ddd;
+  padding-left: 10px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+
+  &:not(.active) {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: 0.3s 0.3s;
+  }
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    content: "";
+    background-image: url("./gear.svg");
+    background-size: contain;
+  }
+
+  &:active {
+    background-color: #bbb;
+  }
+}
