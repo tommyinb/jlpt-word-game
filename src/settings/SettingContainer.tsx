@@ -1,14 +1,57 @@
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useCallback, useMemo, useState } from "react";
 import { SettingContext } from "./SettingContext";
 
 export function SettingContainer({ children }: Props) {
+  const storageKey = "settings-SettingContainer";
+
   const [active, setActive] = useState(false);
 
-  const [hintKanji, setHintKanji] = useState(true);
-  const [hintHiragana, setHintHiragana] = useState(false);
-  const [hintMeaning, setHintMeaning] = useState(true);
+  const [value, setValue] = useState(() => {
+    const text = localStorage.getItem(storageKey);
 
-  const [randomOrder, setRandomOrder] = useState(true);
+    try {
+      const value = text ? JSON.parse(text) : {};
+
+      return {
+        hintKanji: !!value.hintKanji,
+        hintHiragana: !!value.hintHiragana,
+        hintMeaning: !!value.hintMeaning,
+        randomOrder: !!value.randomOrder,
+      };
+    } catch {
+      return {
+        hintKanji: true,
+        hintHiragana: false,
+        hintMeaning: true,
+        randomOrder: true,
+      };
+    }
+  });
+
+  const applyValue = useCallback<typeof setValue>((value) => {
+    setValue(value);
+
+    const text = JSON.stringify(value);
+    localStorage.setItem(storageKey, text);
+  }, []);
+
+  const setHintKanji = useCallback(
+    (hintKanji: boolean) => applyValue({ ...value, hintKanji }),
+    [applyValue, value]
+  );
+  const setHintHiragana = useCallback(
+    (hintHiragana: boolean) => applyValue({ ...value, hintHiragana }),
+    [applyValue, value]
+  );
+  const setHintMeaning = useCallback(
+    (hintMeaning: boolean) => applyValue({ ...value, hintMeaning }),
+    [applyValue, value]
+  );
+
+  const setRandomOrder = useCallback(
+    (randomOrder: boolean) => applyValue({ ...value, randomOrder }),
+    [applyValue, value]
+  );
 
   return (
     <SettingContext.Provider
@@ -16,16 +59,23 @@ export function SettingContainer({ children }: Props) {
         () => ({
           active,
           setActive,
-          hintKanji,
+          hintKanji: value.hintKanji,
           setHintKanji,
-          hintHiragana,
+          hintHiragana: value.hintHiragana,
           setHintHiragana,
-          hintMeaning,
+          hintMeaning: value.hintMeaning,
           setHintMeaning,
-          randomOrder,
+          randomOrder: value.randomOrder,
           setRandomOrder,
         }),
-        [active, hintHiragana, hintKanji, hintMeaning, randomOrder]
+        [
+          active,
+          setHintHiragana,
+          setHintKanji,
+          setHintMeaning,
+          setRandomOrder,
+          value,
+        ]
       )}
     >
       {children}
