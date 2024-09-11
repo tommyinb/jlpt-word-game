@@ -1,0 +1,24 @@
+.desks-Desk {
+  height: 250px;
+  display: grid;
+  grid-template:
+    "kanji" 1fr
+    "hiragana" auto
+    "meaning" 1fr
+    / 1fr;
+  gap: 5px;
+  background-color: #f8f8f8;
+
+  & .kanji {
+    grid-area: kanji;
+    align-self: flex-end;
+  }
+
+  & .hiragana {
+    grid-area: hiragana;
+  }
+
+  & .meaning {
+    grid-area: meaning;
+  }
+}

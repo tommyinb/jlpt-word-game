@@ -1,0 +1,22 @@
+.controls-Next {
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  background-color: #a2d2ff;
+  padding-left: 15px;
+  padding-right: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+
+  &::after {
+    width: 20px;
+    height: 20px;
+    content: "";
+    background-image: url("./triangle.svg");
+    background-size: contain;
+  }
+}
