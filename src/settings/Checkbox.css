@@ -1,0 +1,6 @@
+.settings-Checkbox {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  user-select: none;
+}
