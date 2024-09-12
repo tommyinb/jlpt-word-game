@@ -8,16 +8,16 @@ import { SettingContainer } from "./settings/SettingContainer";
 function App() {
   return (
     <div className="App">
-      <GameContainer>
-        <SettingContainer>
+      <SettingContainer>
+        <GameContainer>
           <h1>JLPT 単語</h1>
 
           <Desk />
           <Control className="control" />
 
           <History />
-        </SettingContainer>
-      </GameContainer>
+        </GameContainer>
+      </SettingContainer>
     </div>
   );
 }

@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
 import "./Next.css";
+import { compareWord } from "./compareWord";
 
 export function Next() {
   const {
     currentWord,
     setCurrentWord,
-    currentShown: gameShown,
-    setCurrentShown: setGameShown,
+    currentShown,
+    setCurrentShown,
     nextWords,
     setNextWords,
     oldWords,
@@ -26,28 +27,39 @@ export function Next() {
 
   return (
     <div
-      className={`controls-Next ${gameShown ? "active" : ""}`}
+      className={`controls-Next ${currentShown ? "active" : ""}`}
       onClick={() => {
-        if (gameShown) {
-          const nextIndex = randomOrder
-            ? Math.floor(Math.random() * nextWords.length)
-            : 0;
+        if (currentShown) {
+          const nextCandidates = (function () {
+            const nextCandidates = nextWords.filter(
+              (nextWord) => compareWord(nextWord, currentWord) >= 0
+            );
 
-          const nextWord = nextWords[nextIndex];
+            if (nextCandidates.length > 0) {
+              return nextCandidates;
+            } else {
+              return nextWords;
+            }
+          })();
+
+          const nextWord =
+            nextCandidates[
+              randomOrder
+                ? Math.floor(Math.random() * nextCandidates.length)
+                : 0
+            ];
+
           setCurrentWord(nextWord);
 
-          setGameShown(
+          setCurrentShown(
             (hintKanji || !nextWord.hiragana) && hintHiragana && hintMeaning
           );
 
-          setNextWords([
-            ...nextWords.slice(0, nextIndex),
-            ...nextWords.slice(nextIndex + 1),
-          ]);
+          setNextWords(nextWords.filter((word) => word !== nextWord));
 
           setOldWords([...oldWords, currentWord]);
         } else {
-          setGameShown(true);
+          setCurrentShown(true);
         }
 
         if (settingActive) {
