@@ -3,6 +3,10 @@
     text-align: center;
     color: #333;
 
+    @media (prefers-color-scheme: dark) {
+      color: #ccc;
+    }
+
     &:not(.active) {
       opacity: 0;
     }

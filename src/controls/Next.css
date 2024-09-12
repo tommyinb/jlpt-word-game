@@ -12,6 +12,11 @@
   cursor: pointer;
   user-select: none;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: #a01a58;
+    border-color: #eee;
+  }
+
   &::after {
     width: 20px;
     height: 20px;
@@ -22,9 +27,17 @@
 
   &.active {
     background-color: #72bbff;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #b7094c;
+    }
   }
 
   &:active {
     background-color: #53acff;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #e60a5e;
+    }
   }
 }

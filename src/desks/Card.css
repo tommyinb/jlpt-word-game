@@ -15,6 +15,11 @@
     background-color: #bde0fe;
     transition: 0.3s;
     backface-visibility: hidden;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #a01a58;
+      border-color: #eee;
+    }
   }
 
   &.active .cover {
@@ -29,6 +34,10 @@
     font-size: min(40px, 15vh, 8vw);
     color: #333;
     user-select: none;
+
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
   }
 
   &:not(.active) .content {

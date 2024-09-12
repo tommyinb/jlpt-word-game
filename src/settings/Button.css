@@ -13,6 +13,11 @@
   cursor: pointer;
   user-select: none;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: #383838;
+    color: #ccc;
+  }
+
   &:not(.active) {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -29,5 +34,9 @@
 
   &:active {
     background-color: #bbb;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #555;
+    }
   }
 }

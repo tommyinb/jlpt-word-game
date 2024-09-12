@@ -1,7 +1,6 @@
 .settings-Hint {
   display: flex;
   gap: 15px;
-  color: #444;
 
   & .label {
     min-width: 50px;

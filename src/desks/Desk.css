@@ -1,5 +1,6 @@
 .desks-Desk {
   height: min(250px, 60vh);
+  background-color: #f8f8f8;
   display: grid;
   grid-template:
     "kanji" 1fr
@@ -7,7 +8,6 @@
     "meaning" 1fr
     / 1fr;
   gap: 5px;
-  background-color: #f8f8f8;
 
   & .kanji {
     grid-area: kanji;
@@ -20,5 +20,9 @@
 
   & .meaning {
     grid-area: meaning;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #383838;
   }
 }
