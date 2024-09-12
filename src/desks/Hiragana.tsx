@@ -4,8 +4,7 @@ import { Card } from "./Card";
 import "./Hiragana.css";
 
 export function Hiragana({ className }: Props) {
-  const { currentWord, currentShown, setCurrentShown } =
-    useContext(GameContext);
+  const { currentWord, setCurrentShown } = useContext(GameContext);
 
   const letters = useMemo(
     () => [...(currentWord.hiragana ?? currentWord.japanese)],
@@ -14,10 +13,7 @@ export function Hiragana({ className }: Props) {
 
   const [actives, setActives] = useState<boolean[]>([]);
 
-  useEffect(
-    () => setActives(letters.map(() => currentShown)),
-    [currentShown, letters]
-  );
+  useEffect(() => setActives(letters.map(() => false)), [letters]);
 
   const setLetterActives = useMemo(
     () =>

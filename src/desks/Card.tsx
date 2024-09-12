@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
 import "./Card.css";
 
@@ -7,15 +8,19 @@ export function Card({
   active: cardActive,
   setActive: setCardActive,
 }: Props) {
+  const { currentShown } = useContext(GameContext);
+
   const {
     active: settingActive,
     setActive: setSettingActive,
     hintHiragana,
   } = useContext(SettingContext);
 
+  const outputActive = cardActive || currentShown || hintHiragana;
+
   return (
     <div
-      className={`desks-Card ${cardActive || hintHiragana ? "active" : ""}`}
+      className={`desks-Card ${outputActive ? "active" : ""}`}
       onClick={() => {
         if (!cardActive && !hintHiragana) {
           setCardActive(true);
@@ -27,7 +32,8 @@ export function Card({
       }}
     >
       <div className="cover" />
-      <div className="content">{value}</div>
+
+      <div className="content">{outputActive && value}</div>
     </div>
   );
 }
