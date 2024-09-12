@@ -13,10 +13,10 @@ export function SettingContainer({ children }: Props) {
       const value = text ? JSON.parse(text) : {};
 
       return {
-        hintKanji: !!value.hintKanji,
-        hintHiragana: !!value.hintHiragana,
-        hintMeaning: !!value.hintMeaning,
-        randomOrder: !!value.randomOrder,
+        hintKanji: !!(value.hintKanji ?? true),
+        hintHiragana: !!(value.hintHiragana ?? false),
+        hintMeaning: !!(value.hintMeaning ?? true),
+        randomOrder: !!(value.randomOrder ?? true),
       };
     } catch {
       return {
