@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { GameContext } from "../games/GameContext";
 import "./Poster.css";
 
-export function Poster({ active, setActive }: Props) {
-  const { oldWords } = useContext(GameContext);
-
+export function Poster({ active, setActive, closeable }: Props) {
   return (
     <div className={`sales-Poster ${active ? "active" : ""}`}>
       <div className="content">
@@ -14,7 +10,7 @@ export function Poster({ active, setActive }: Props) {
         <div
           className="button"
           onClick={() => {
-            if (oldWords.length < 25) {
+            if (closeable) {
               setActive(false);
             }
           }}
@@ -30,4 +26,5 @@ export function Poster({ active, setActive }: Props) {
 interface Props {
   active: boolean;
   setActive: (active: boolean) => void;
+  closeable: boolean;
 }
