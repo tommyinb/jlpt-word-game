@@ -40,4 +40,12 @@
       background-color: #e60a5e;
     }
   }
+
+  button {
+    display: none;
+  }
+
+  &.selling {
+    pointer-events: none;
+  }
 }

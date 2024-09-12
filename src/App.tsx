@@ -3,6 +3,7 @@ import { Control } from "./controls/Control";
 import { Desk } from "./desks/Desk";
 import { GameContainer } from "./games/GameContainer";
 import { History } from "./histories/History";
+import { Sale } from "./sales/Sale";
 import { SettingContainer } from "./settings/SettingContainer";
 
 function App() {
@@ -10,12 +11,14 @@ function App() {
     <div className="App">
       <SettingContainer>
         <GameContainer>
-          <h1>JLPT 単語</h1>
+          <Sale>
+            <h1>JLPT 単語</h1>
 
-          <Desk />
-          <Control className="control" />
+            <Desk />
+            <Control className="control" />
 
-          <History />
+            <History />
+          </Sale>
         </GameContainer>
       </SettingContainer>
     </div>

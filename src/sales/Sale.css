@@ -1,0 +1,13 @@
+.sales-Sale {
+  & > .content {
+    transition: 0.5s;
+  }
+
+  &.active {
+    & > .content {
+      filter: blur(3px);
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}
