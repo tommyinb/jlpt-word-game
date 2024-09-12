@@ -1,5 +1,5 @@
 .desks-Desk {
-  height: 250px;
+  height: min(250px, 60vh);
   display: grid;
   grid-template:
     "kanji" 1fr

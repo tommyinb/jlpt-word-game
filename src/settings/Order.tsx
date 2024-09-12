@@ -10,19 +10,21 @@ export function Order() {
     <div className="settings-Order">
       <div className="label">順番</div>
 
-      <Checkbox checked={randomOrder} setChecked={setRandomOrder}>
-        ランダム
-      </Checkbox>
+      <div className="content">
+        <Checkbox checked={randomOrder} setChecked={setRandomOrder}>
+          ランダム
+        </Checkbox>
 
-      <Checkbox
-        checked={!randomOrder}
-        setChecked={useCallback(
-          (order) => setRandomOrder(!order),
-          [setRandomOrder]
-        )}
-      >
-        五十音
-      </Checkbox>
+        <Checkbox
+          checked={!randomOrder}
+          setChecked={useCallback(
+            (order) => setRandomOrder(!order),
+            [setRandomOrder]
+          )}
+        >
+          五十音
+        </Checkbox>
+      </div>
     </div>
   );
 }

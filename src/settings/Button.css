@@ -1,11 +1,11 @@
 .settings-Button {
-  height: 30px;
+  height: 40px;
   box-sizing: border-box;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   background-color: #ddd;
-  padding-left: 10px;
-  padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 20px;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -14,8 +14,8 @@
   user-select: none;
 
   &:not(.active) {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     transition: 0.3s 0.3s;
   }
 

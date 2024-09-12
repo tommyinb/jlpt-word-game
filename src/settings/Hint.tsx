@@ -17,17 +17,19 @@ export function Hint() {
     <div className="settings-Hint">
       <div className="label">ヒント</div>
 
-      <Checkbox checked={hintKanji} setChecked={setHintKanji}>
-        漢字
-      </Checkbox>
+      <div className="content">
+        <Checkbox checked={hintKanji} setChecked={setHintKanji}>
+          漢字
+        </Checkbox>
 
-      <Checkbox checked={hintHiragana} setChecked={setHintHiragana}>
-        ひらがな
-      </Checkbox>
+        <Checkbox checked={hintHiragana} setChecked={setHintHiragana}>
+          ひらがな
+        </Checkbox>
 
-      <Checkbox checked={hintMeaning} setChecked={setHintMeaning}>
-        意味
-      </Checkbox>
+        <Checkbox checked={hintMeaning} setChecked={setHintMeaning}>
+          意味
+        </Checkbox>
+      </div>
     </div>
   );
 }
