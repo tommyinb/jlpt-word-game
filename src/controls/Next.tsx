@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
 import "./Next.css";
@@ -10,8 +10,7 @@ export function Next() {
     setCurrentWord,
     currentShown,
     setCurrentShown,
-    nextWords,
-    setNextWords,
+    allWords,
     oldWords,
     setOldWords,
   } = useContext(GameContext);
@@ -25,20 +24,29 @@ export function Next() {
     randomOrder,
   } = useContext(SettingContext);
 
+  const newWords = useMemo(() => {
+    const oldWordsSet = new Set(oldWords);
+    return allWords.filter((word) => !oldWordsSet.has(word));
+  }, [allWords, oldWords]);
+
   return (
     <div
       className={`controls-Next ${currentShown ? "active" : ""}`}
       onClick={() => {
+        if (newWords.length <= 0) {
+          return;
+        }
+
         if (currentShown) {
           const nextCandidates = (function () {
-            const nextCandidates = nextWords.filter(
-              (nextWord) => compareWord(nextWord, currentWord) > 0
+            const nextCandidates = newWords.filter(
+              (newWord) => compareWord(newWord, currentWord) > 0
             );
 
             if (nextCandidates.length > 0) {
               return nextCandidates;
             } else {
-              return nextWords;
+              return newWords;
             }
           })();
 
@@ -54,8 +62,6 @@ export function Next() {
           setCurrentShown(
             (hintKanji || !nextWord.hiragana) && hintHiragana && hintMeaning
           );
-
-          setNextWords(nextWords.filter((word) => word !== nextWord));
 
           setOldWords([...oldWords, currentWord]);
         } else {
