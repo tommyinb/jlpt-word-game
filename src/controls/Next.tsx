@@ -32,7 +32,7 @@ export function Next() {
         if (currentShown) {
           const nextCandidates = (function () {
             const nextCandidates = nextWords.filter(
-              (nextWord) => compareWord(nextWord, currentWord) >= 0
+              (nextWord) => compareWord(nextWord, currentWord) > 0
             );
 
             if (nextCandidates.length > 0) {

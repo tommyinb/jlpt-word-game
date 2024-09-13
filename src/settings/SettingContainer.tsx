@@ -1,56 +1,28 @@
 import { ReactNode, useCallback, useMemo, useState } from "react";
 import { SettingContext } from "./SettingContext";
+import { useStorageValue } from "./useStorageValue";
 
 export function SettingContainer({ children }: Props) {
-  const storageKey = "settings-SettingContainer";
-
   const [active, setActive] = useState(false);
 
-  const [value, setValue] = useState(() => {
-    const text = localStorage.getItem(storageKey);
-
-    try {
-      const value = text ? JSON.parse(text) : {};
-
-      return {
-        hintKanji: !!(value.hintKanji ?? true),
-        hintHiragana: !!(value.hintHiragana ?? false),
-        hintMeaning: !!(value.hintMeaning ?? true),
-        randomOrder: !!(value.randomOrder ?? true),
-      };
-    } catch {
-      return {
-        hintKanji: true,
-        hintHiragana: false,
-        hintMeaning: true,
-        randomOrder: true,
-      };
-    }
-  });
-
-  const applyValue = useCallback<typeof setValue>((value) => {
-    setValue(value);
-
-    const text = JSON.stringify(value);
-    localStorage.setItem(storageKey, text);
-  }, []);
+  const { value, saveValue } = useStorageValue();
 
   const setHintKanji = useCallback(
-    (hintKanji: boolean) => applyValue({ ...value, hintKanji }),
-    [applyValue, value]
+    (hintKanji: boolean) => saveValue({ ...value, hintKanji }),
+    [saveValue, value]
   );
   const setHintHiragana = useCallback(
-    (hintHiragana: boolean) => applyValue({ ...value, hintHiragana }),
-    [applyValue, value]
+    (hintHiragana: boolean) => saveValue({ ...value, hintHiragana }),
+    [saveValue, value]
   );
   const setHintMeaning = useCallback(
-    (hintMeaning: boolean) => applyValue({ ...value, hintMeaning }),
-    [applyValue, value]
+    (hintMeaning: boolean) => saveValue({ ...value, hintMeaning }),
+    [saveValue, value]
   );
 
   const setRandomOrder = useCallback(
-    (randomOrder: boolean) => applyValue({ ...value, randomOrder }),
-    [applyValue, value]
+    (randomOrder: boolean) => saveValue({ ...value, randomOrder }),
+    [saveValue, value]
   );
 
   return (

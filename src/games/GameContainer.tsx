@@ -1,13 +1,14 @@
 import { ReactNode, useMemo, useState } from "react";
 import { GameContext } from "./GameContext";
 import n2Verbs from "./n2-verbs.json" assert { type: "json" };
+import { useCurrentWord } from "./useCurrentWord";
 import { Word } from "./word";
 
 export function GameContainer({ children }: Props) {
-  const [currentWord, setCurrentWord] = useState<Word>(() => n2Verbs[0]);
+  const { currentWord, saveCurrentWord } = useCurrentWord();
   const [currentShown, setCurrentShown] = useState<boolean>(() => false);
 
-  const [nextWords, setNextWords] = useState<Word[]>(() => n2Verbs.slice(1));
+  const [nextWords, setNextWords] = useState<Word[]>(() => n2Verbs);
 
   const [oldWords, setOldWords] = useState<Word[]>([]);
 
@@ -16,7 +17,7 @@ export function GameContainer({ children }: Props) {
       value={useMemo(
         () => ({
           currentWord,
-          setCurrentWord,
+          setCurrentWord: saveCurrentWord,
           currentShown,
           setCurrentShown,
           nextWords,
@@ -24,7 +25,7 @@ export function GameContainer({ children }: Props) {
           oldWords,
           setOldWords,
         }),
-        [currentShown, currentWord, nextWords, oldWords]
+        [currentShown, currentWord, nextWords, oldWords, saveCurrentWord]
       )}
     >
       {children}
