@@ -1,4 +1,4 @@
-import { Word } from "../games/word";
+import { Word } from "../words/word";
 import "./Line.css";
 
 export function Line({ word }: Props) {

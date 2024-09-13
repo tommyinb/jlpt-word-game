@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from "react";
-import { Word } from "./word";
+import { Word } from "../words/word";
 
 export const GameContext = createContext<{
   currentWord: Word;

@@ -1,4 +1,4 @@
-import { Word } from "../games/word";
+import { Word } from "../words/word";
 
 export function compareWord(leftWord: Word, rightWord: Word) {
   const leftHiragana = leftWord.hiragana ?? leftWord.japanese;

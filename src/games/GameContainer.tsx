@@ -1,8 +1,8 @@
 import { ReactNode, useMemo, useState } from "react";
+import { Word } from "../words/word";
 import { GameContext } from "./GameContext";
 import n2Verbs from "./n2-verbs.json" assert { type: "json" };
 import { useCurrentWord } from "./useCurrentWord";
-import { Word } from "./word";
 
 export function GameContainer({ children }: Props) {
   const { currentWord, saveCurrentWord } = useCurrentWord();
