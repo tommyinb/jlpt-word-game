@@ -13,11 +13,13 @@
     box-sizing: border-box;
     border: 1px solid #d8edff;
     background-color: #bde0fe;
+    box-shadow: 1px 1px 10px #d8edff44;
     transition: 0.3s;
     backface-visibility: hidden;
 
     @media (prefers-color-scheme: dark) {
       background-color: #a01a58;
+      box-shadow: 1px 1px 10px #a01a5844;
       border-color: #eee;
     }
   }

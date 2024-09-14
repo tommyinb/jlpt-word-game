@@ -9,6 +9,7 @@
   align-items: center;
   gap: 5px;
   color: #fff;
+  transition: 0.3s;
   cursor: pointer;
   user-select: none;
 
@@ -23,6 +24,7 @@
     content: "";
     background-image: url("./triangle.svg");
     background-size: contain;
+    transition: 0.3s;
   }
 
   &.active {
@@ -41,8 +43,13 @@
     }
   }
 
-  button {
-    display: none;
+  &.disabled {
+    background-color: #d8d8d8;
+    color: #666;
+
+    &::after {
+      transform: rotate(-180deg);
+    }
   }
 
   &.selling {

@@ -19,7 +19,7 @@
       background-color: #ddd;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
       color: #444;
 
       @media (prefers-color-scheme: dark) {

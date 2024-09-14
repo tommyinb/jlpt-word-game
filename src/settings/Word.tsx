@@ -23,7 +23,7 @@ export function Word() {
 
   return (
     <div className="settings-Word">
-      <div className="label">単語</div>
+      <div className="label">レベル</div>
 
       <div className="content">
         <Checkbox checked={n2Adjective} setChecked={setN2Adjective}>

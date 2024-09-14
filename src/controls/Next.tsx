@@ -31,7 +31,9 @@ export function Next() {
 
   return (
     <div
-      className={`controls-Next ${currentShown ? "active" : ""}`}
+      className={`controls-Next ${currentShown ? "active" : ""} ${
+        newWords.length <= 0 ? "disabled" : ""
+      }`}
       onClick={() => {
         if (newWords.length <= 0) {
           return;
@@ -73,7 +75,7 @@ export function Next() {
         }
       }}
     >
-      次へ
+      {newWords.length > 0 ? "次へ" : "終わり"}
     </div>
   );
 }
