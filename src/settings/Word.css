@@ -1,0 +1,15 @@
+.settings-Word {
+  display: flex;
+  gap: 15px;
+
+  & .label {
+    min-width: 50px;
+  }
+
+  & .content {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 5px;
+  }
+}

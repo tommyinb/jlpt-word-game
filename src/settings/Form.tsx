@@ -3,6 +3,7 @@ import "./Form.css";
 import { Hint } from "./Hint";
 import { Order } from "./Order";
 import { SettingContext } from "./SettingContext";
+import { Word } from "./Word";
 
 export function Form() {
   const { active } = useContext(SettingContext);
@@ -14,6 +15,8 @@ export function Form() {
           <Hint />
 
           <Order />
+
+          <Word />
         </div>
       </div>
     </div>
