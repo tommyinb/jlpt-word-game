@@ -5,8 +5,11 @@ import { Game } from "./games/Game";
 import { History } from "./histories/History";
 import { Sale } from "./sales/Sale";
 import { SettingContainer } from "./settings/SettingContainer";
+import { useAnalytics } from "./useAnalytics";
 
 function App() {
+  useAnalytics();
+
   return (
     <div className="App">
       <SettingContainer>
