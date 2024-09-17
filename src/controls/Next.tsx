@@ -75,7 +75,7 @@ export function Next() {
         }
       }}
     >
-      {newWords.length > 0 ? "次へ" : "終わり"}
+      {allWords.length <= 0 || newWords.length > 0 ? "次へ" : "終わり"}
     </div>
   );
 }

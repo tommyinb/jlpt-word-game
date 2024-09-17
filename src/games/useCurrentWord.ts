@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
+import { Word } from "../words/word";
 
 export function useCurrentWord() {
   const storageKey = "games-useCurrentWord";
 
-  const [currentWord, setCurrentWord] = useState(() => {
+  const [currentWord, setCurrentWord] = useState<Word>(() => {
     const text = localStorage.getItem(storageKey);
 
     const defaultValue = {
