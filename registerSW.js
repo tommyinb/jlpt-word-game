@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/jlpt-word-game/sw.js', { scope: '/jlpt-word-game/' })})}
