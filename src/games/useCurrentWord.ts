@@ -1,17 +1,26 @@
 import { useCallback, useState } from "react";
+import { useTargeted } from "../sales/useTargeted";
 import { Word } from "../words/word";
 
 export function useCurrentWord() {
   const storageKey = "games-useCurrentWord";
 
+  const targeted = useTargeted();
+
   const [currentWord, setCurrentWord] = useState<Word>(() => {
     const text = localStorage.getItem(storageKey);
 
-    const defaultValue = {
-      hiragana: "あいする",
-      japanese: "愛する",
-      chinese: "(他) 愛",
-    };
+    const defaultValue = targeted
+      ? {
+          hiragana: "ばかもの",
+          japanese: "馬鹿者",
+          chinese: "白痴",
+        }
+      : {
+          hiragana: "あいする",
+          japanese: "愛する",
+          chinese: "(他) 愛",
+        };
 
     if (!text) {
       return defaultValue;

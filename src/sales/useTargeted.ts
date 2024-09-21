@@ -8,13 +8,13 @@ export function useTargeted() {
         .filter((match) => match)
         .map((match) => match![0]);
 
-      const uniqueLanguages = allLanguages.filter(
-        (language, index, array) => array.indexOf(language) === index
-      );
+      const uniqueLanguages = [...new Set(allLanguages)];
 
       const mainLanguages = uniqueLanguages.slice(0, 3);
 
-      return mainLanguages.some((language) => language.startsWith("ko"));
+      return mainLanguages.some((language) =>
+        language.toLowerCase().startsWith("ko")
+      );
     } catch {
       return false;
     }
