@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../games/GameContext";
 
 export function useTrialCount() {
-  const storageKey = "sales-useCountTrial";
+  const storageKey = "sales-useCountTrial *e1OTEtCXx9aVlap";
 
   const [count, setCount] = useState(() => {
     const text = localStorage.getItem(storageKey);

@@ -3,7 +3,7 @@ import { useTargeted } from "../sales/useTargeted";
 import { Word } from "../words/word";
 
 export function useCurrentWord() {
-  const storageKey = "games-useCurrentWord";
+  const storageKey = "games-useCurrentWord *n4zFshmGmxQPTQx";
 
   const targeted = useTargeted();
 
