@@ -14,9 +14,9 @@ export function Form() {
         <div className="content">
           <Hint />
 
-          <Word />
-
           <Order />
+
+          <Word />
         </div>
       </div>
     </div>
