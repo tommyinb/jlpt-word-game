@@ -3,7 +3,7 @@ import { SettingContext } from "./SettingContext";
 import { useHints } from "./useStorageHints";
 import { useStorageValue } from "./useStorageValue";
 
-export function SettingContainer({ children }: Props) {
+export function SettingProvider({ children }: Props) {
   const [active, setActive] = useState(false);
 
   const { hints, saveHints } = useHints();

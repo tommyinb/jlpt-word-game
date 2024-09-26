@@ -4,7 +4,7 @@ import { Desk } from "./desks/Desk";
 import { Game } from "./games/Game";
 import { History } from "./histories/History";
 import { Sale } from "./sales/Sale";
-import { SettingContainer } from "./settings/SettingContainer";
+import { SettingProvider } from "./settings/SettingProvider";
 import { useAnalytics } from "./useAnalytics";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <SettingContainer>
+      <SettingProvider>
         <Game>
           <Sale>
             <h1>JLPT 単語</h1>
@@ -23,7 +23,7 @@ function App() {
             <History />
           </Sale>
         </Game>
-      </SettingContainer>
+      </SettingProvider>
     </div>
   );
 }
