@@ -1,5 +1,14 @@
-import { Dispatch, lazy, SetStateAction, Suspense, useContext } from "react";
+import {
+  Dispatch,
+  lazy,
+  SetStateAction,
+  Suspense,
+  useCallback,
+  useContext,
+} from "react";
 import { SettingContext } from "../settings/SettingContext";
+import { WordLevel } from "../settings/wordLevel";
+import { WordType } from "../settings/wordType";
 import { File } from "../words/file";
 
 const N2AdjectiveLoader = lazy(() => import("../words/N2AdjectiveLoader"));
@@ -12,26 +21,38 @@ const N5NounLoader = lazy(() => import("../words/N5NounLoader"));
 const N5VerbLoader = lazy(() => import("../words/N5VerbLoader"));
 
 export function WordsLoader({ setFiles }: Props) {
-  const {
-    n2Adjective,
-    n2Adverb,
-    n2Verb,
-    n5Adjective,
-    n5Adverb,
-    n5Noun,
-    n5Verb,
-  } = useContext(SettingContext);
+  const { words } = useContext(SettingContext);
+
+  const active = useCallback(
+    (level: WordLevel, type: WordType) =>
+      !!words.find((word) => word.level === level && word.type === type),
+    [words]
+  );
 
   return (
     <Suspense>
-      {n2Adjective && <N2AdjectiveLoader setFiles={setFiles} />}
-      {n2Adverb && <N2AdverbLoader setFiles={setFiles} />}
-      {n2Verb && <N2VerbLoader setFiles={setFiles} />}
+      {active(WordLevel.N2, WordType.Adjective) && (
+        <N2AdjectiveLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N2, WordType.Adverb) && (
+        <N2AdverbLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N2, WordType.Verb) && (
+        <N2VerbLoader setFiles={setFiles} />
+      )}
 
-      {n5Adjective && <N5AdjectiveLoader setFiles={setFiles} />}
-      {n5Adverb && <N5AdverbLoader setFiles={setFiles} />}
-      {n5Noun && <N5NounLoader setFiles={setFiles} />}
-      {n5Verb && <N5VerbLoader setFiles={setFiles} />}
+      {active(WordLevel.N5, WordType.Adjective) && (
+        <N5AdjectiveLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N5, WordType.Adverb) && (
+        <N5AdverbLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N5, WordType.Noun) && (
+        <N5NounLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N5, WordType.Verb) && (
+        <N5VerbLoader setFiles={setFiles} />
+      )}
     </Suspense>
   );
 }

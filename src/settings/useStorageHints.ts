@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
 import { Hint } from "./hint";
 
-export function useHints(): {
+export function useStorageHints(): {
   hints: Hint[];
   saveHints: (hints: Hint[]) => void;
 } {
-  const storageKey = "settings-useStorageHints";
+  const storageKey = "settings-useStorageHints *qyW7MrMPacrM3hu";
 
   const [hints, setHints] = useState(() => {
     const text = localStorage.getItem(storageKey);
@@ -19,10 +19,7 @@ export function useHints(): {
 
       const allHints = Object.values(Hint);
 
-      return [...value]
-        .map((item) => allHints.find((hint) => hint.toString() === item))
-        .filter((item) => item)
-        .map((hint) => hint!);
+      return [...value].filter((item) => allHints.includes(item));
     } catch {
       return [Hint.Kanji, Hint.Meaning];
     }

@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
 import { Hint } from "../settings/hint";
+import { Order } from "../settings/order";
 import "./Next.css";
 import { compareWord } from "./compareWord";
 
@@ -20,7 +21,7 @@ export function Next() {
     active: settingActive,
     setActive: setSettingActive,
     hints,
-    randomOrder,
+    order,
   } = useContext(SettingContext);
 
   const newWords = useMemo(() => {
@@ -53,7 +54,7 @@ export function Next() {
 
           const nextWord =
             nextCandidates[
-              randomOrder
+              order === Order.Random
                 ? Math.floor(Math.random() * nextCandidates.length)
                 : 0
             ];
