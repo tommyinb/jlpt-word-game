@@ -1,5 +1,6 @@
 .desks-Desk {
-  height: min(250px, 60vh);
+  width: min(500px, 90vw);
+  min-height: min(250px, 60vh);
   background-color: #f8f8f8;
   display: grid;
   grid-template:

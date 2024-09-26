@@ -1,6 +1,4 @@
 .App {
-  margin: auto;
-  width: min(500px, 90vw);
   padding-bottom: 20px;
 
   & h1 {

@@ -30,15 +30,28 @@ export function Hiragana({ className }: Props) {
     [actives, letters, setCurrentShown]
   );
 
+  const lines = useMemo(() => {
+    const count = Math.ceil(letters.length / 6);
+    const size = Math.ceil(letters.length / count);
+
+    return Array.from({ length: count }).map((_, index) =>
+      letters.slice(index * size, (index + 1) * size)
+    );
+  }, [letters]);
+
   return (
     <div className={`desks-Hiragana ${className}`}>
-      {letters.map((letter, index) => (
-        <Card
-          key={index}
-          value={letter}
-          active={actives[index]}
-          setActive={setLetterActives[index]}
-        />
+      {lines.map((line, index) => (
+        <div key={index} className="line">
+          {line.map((letter, index) => (
+            <Card
+              key={index}
+              value={letter}
+              active={actives[index]}
+              setActive={setLetterActives[index]}
+            />
+          ))}
+        </div>
       ))}
     </div>
   );
