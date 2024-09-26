@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import "./Form.css";
-import { Hint } from "./Hint";
-import { Order } from "./Order";
+import { FormHint } from "./FormHint";
+import { FormOrder } from "./FormOrder";
+import { FormWord } from "./FormWord";
 import { SettingContext } from "./SettingContext";
-import { Word } from "./Word";
 
 export function Form() {
   const { active } = useContext(SettingContext);
@@ -12,11 +12,11 @@ export function Form() {
     <div className={`settings-Form ${active ? "active" : ""}`}>
       <div className="inner">
         <div className="content">
-          <Hint />
+          <FormHint />
 
-          <Order />
+          <FormOrder />
 
-          <Word />
+          <FormWord />
         </div>
       </div>
     </div>

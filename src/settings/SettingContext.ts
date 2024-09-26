@@ -1,15 +1,12 @@
 import { createContext } from "react";
+import { Hint } from "./hint";
 
 export const SettingContext = createContext<{
   active: boolean;
   setActive: (active: boolean) => void;
 
-  hintKanji: boolean;
-  setHintKanji: (hintKanji: boolean) => void;
-  hintHiragana: boolean;
-  setHintHiragana: (hintHiragana: boolean) => void;
-  hintMeaning: boolean;
-  setHintMeaning: (hintMeaning: boolean) => void;
+  hints: Hint[];
+  saveHints: (hints: Hint[]) => void;
 
   randomOrder: boolean;
   setRandomOrder: (randomOrder: boolean) => void;
@@ -32,12 +29,8 @@ export const SettingContext = createContext<{
   active: false,
   setActive: () => {},
 
-  hintKanji: true,
-  setHintKanji: () => {},
-  hintHiragana: false,
-  setHintHiragana: () => {},
-  hintMeaning: true,
-  setHintMeaning: () => {},
+  hints: [],
+  saveHints: () => {},
 
   randomOrder: true,
   setRandomOrder: () => {},

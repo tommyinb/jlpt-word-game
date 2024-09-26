@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
 import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
+import { Hint } from "../settings/hint";
 import "./Next.css";
 import { compareWord } from "./compareWord";
 
@@ -18,9 +19,7 @@ export function Next() {
   const {
     active: settingActive,
     setActive: setSettingActive,
-    hintKanji,
-    hintHiragana,
-    hintMeaning,
+    hints,
     randomOrder,
   } = useContext(SettingContext);
 
@@ -62,7 +61,9 @@ export function Next() {
           setCurrentWord(nextWord);
 
           setCurrentShown(
-            (hintKanji || !nextWord.hiragana) && hintHiragana && hintMeaning
+            (hints.includes(Hint.Kanji) || !nextWord.hiragana) &&
+              hints.includes(Hint.Hiragana) &&
+              hints.includes(Hint.Meaning)
           );
 
           setOldWords([...oldWords, currentWord]);

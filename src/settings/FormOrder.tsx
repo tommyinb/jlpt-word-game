@@ -1,13 +1,13 @@
 import { useCallback, useContext } from "react";
 import { Checkbox } from "./Checkbox";
-import "./Order.css";
+import "./FormOrder.css";
 import { SettingContext } from "./SettingContext";
 
-export function Order() {
+export function FormOrder() {
   const { randomOrder, setRandomOrder } = useContext(SettingContext);
 
   return (
-    <div className="settings-Order">
+    <div className="settings-FormOrder">
       <div className="label">順番</div>
 
       <div className="content">

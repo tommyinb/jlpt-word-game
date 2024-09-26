@@ -1,9 +1,12 @@
 import { ReactNode, useCallback, useMemo, useState } from "react";
 import { SettingContext } from "./SettingContext";
+import { useHints } from "./useStorageHints";
 import { useStorageValue } from "./useStorageValue";
 
 export function SettingContainer({ children }: Props) {
   const [active, setActive] = useState(false);
+
+  const { hints, saveHints } = useHints();
 
   const { value, saveValue } = useStorageValue();
 
@@ -61,6 +64,8 @@ export function SettingContainer({ children }: Props) {
         () => ({
           active,
           setActive,
+          hints,
+          saveHints,
           hintKanji: value.hintKanji,
           setHintKanji,
           hintHiragana: value.hintHiragana,
@@ -86,6 +91,8 @@ export function SettingContainer({ children }: Props) {
         }),
         [
           active,
+          hints,
+          saveHints,
           setHintHiragana,
           setHintKanji,
           setHintMeaning,

@@ -1,4 +1,5 @@
 import { ReactNode, useContext, useMemo, useState } from "react";
+import { Hint } from "../settings/hint";
 import { SettingContext } from "../settings/SettingContext";
 import { File } from "../words/file";
 import { Word } from "../words/word";
@@ -9,10 +10,13 @@ import { WordsLoader } from "./WordsLoader";
 export function Game({ children }: Props) {
   const { currentWord, saveCurrentWord } = useCurrentWord();
 
-  const { hintKanji, hintHiragana, hintMeaning } = useContext(SettingContext);
+  const { hints } = useContext(SettingContext);
 
   const [currentShown, setCurrentShown] = useState<boolean>(
-    () => (hintKanji || !currentWord.hiragana) && hintHiragana && hintMeaning
+    () =>
+      (hints.includes(Hint.Kanji) || !currentWord.hiragana) &&
+      hints.includes(Hint.Hiragana) &&
+      hints.includes(Hint.Meaning)
   );
 
   const [files, setFiles] = useState<File[]>([]);

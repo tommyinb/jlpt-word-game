@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GameContext } from "../games/GameContext";
+import { Hint } from "../settings/hint";
 import { SettingContext } from "../settings/SettingContext";
 import "./Card.css";
 
@@ -13,8 +14,10 @@ export function Card({
   const {
     active: settingActive,
     setActive: setSettingActive,
-    hintHiragana,
+    hints,
   } = useContext(SettingContext);
+
+  const hintHiragana = hints.includes(Hint.Hiragana);
 
   const outputActive = cardActive || currentShown || hintHiragana;
 

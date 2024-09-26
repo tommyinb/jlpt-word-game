@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Checkbox } from "./Checkbox";
+import "./FormWord.css";
 import { SettingContext } from "./SettingContext";
-import "./Word.css";
 
-export function Word() {
+export function FormWord() {
   const {
     n2Adjective,
     setN2Adjective,
@@ -22,7 +22,7 @@ export function Word() {
   } = useContext(SettingContext);
 
   return (
-    <div className="settings-Word">
+    <div className="settings-FormWord">
       <div className="label">レベル</div>
 
       <div className="content">
