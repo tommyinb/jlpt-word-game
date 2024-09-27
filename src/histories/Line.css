@@ -14,8 +14,8 @@
       color: #cdb4db;
     }
 
-    & .chinese {
-      flex-shrink: 1;
+    & .hiragana {
+      flex-shrink: 0;
     }
   }
 
