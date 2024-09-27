@@ -45,11 +45,11 @@ export function Next() {
               (newWord) => compareWord(newWord, currentWord) > 0
             );
 
-            if (nextCandidates.length > 0) {
-              return nextCandidates;
-            } else {
+            if (nextCandidates.length <= 0) {
               return newWords;
             }
+
+            return nextCandidates;
           })();
 
           const nextWord =

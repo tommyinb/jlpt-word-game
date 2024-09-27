@@ -46,6 +46,7 @@
   &.disabled {
     background-color: #d8d8d8;
     color: #666;
+    pointer-events: none;
 
     &::after {
       transform: rotate(-180deg);
