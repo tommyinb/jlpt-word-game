@@ -48,6 +48,13 @@ export function FormWord() {
         </Checkbox>
 
         <Checkbox
+          checked={active(WordLevel.N2, WordType.Noun)}
+          setChecked={(value) => setActive(WordLevel.N2, WordType.Noun, value)}
+        >
+          N2 名詞
+        </Checkbox>
+
+        <Checkbox
           checked={active(WordLevel.N2, WordType.Verb)}
           setChecked={(value) => setActive(WordLevel.N2, WordType.Verb, value)}
         >

@@ -12,6 +12,7 @@ import { WordType } from "../settings/wordType";
 import { File } from "../words/file";
 
 const N2AdjectiveLoader = lazy(() => import("../words/N2AdjectiveLoader"));
+const N2NounLoader = lazy(() => import("../words/N2NounLoader"));
 const N2AdverbLoader = lazy(() => import("../words/N2AdverbLoader"));
 const N2VerbLoader = lazy(() => import("../words/N2VerbLoader"));
 
@@ -36,6 +37,9 @@ export function WordsLoader({ setFiles }: Props) {
       )}
       {active(WordLevel.N2, WordType.Adverb) && (
         <N2AdverbLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N2, WordType.Noun) && (
+        <N2NounLoader setFiles={setFiles} />
       )}
       {active(WordLevel.N2, WordType.Verb) && (
         <N2VerbLoader setFiles={setFiles} />
