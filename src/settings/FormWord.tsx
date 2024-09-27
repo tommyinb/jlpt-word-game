@@ -30,6 +30,20 @@ export function FormWord() {
 
       <div className="content">
         <Checkbox
+          checked={active(WordLevel.N1, WordType.Noun)}
+          setChecked={(value) => setActive(WordLevel.N1, WordType.Noun, value)}
+        >
+          N1 名詞
+        </Checkbox>
+
+        <Checkbox
+          checked={active(WordLevel.N1, WordType.Verb)}
+          setChecked={(value) => setActive(WordLevel.N1, WordType.Verb, value)}
+        >
+          N1 動詞
+        </Checkbox>
+
+        <Checkbox
           checked={active(WordLevel.N2, WordType.Adjective)}
           setChecked={(value) =>
             setActive(WordLevel.N2, WordType.Adjective, value)

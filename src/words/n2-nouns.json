@@ -32,7 +32,7 @@
   {
     "hiragana": "あてな",
     "japanese": "宛名",
-    "chinese": "收件人的姓名 ( 地址 )"
+    "chinese": "收件人的姓名"
   },
   {
     "hiragana": "あと",
@@ -181,7 +181,7 @@
   {
     "hiragana": "うわさ",
     "japanese": "噂",
-    "chinese": "謠言 / 傳言 / 傳聞 / 閒話 / 謠傳"
+    "chinese": "謠言 / 傳言 / 傳聞 / 謠傳"
   },
   {
     "hiragana": "うん",
@@ -275,7 +275,7 @@
   {
     "hiragana": "おに",
     "japanese": "鬼",
-    "chinese": "妖魔 / 鬼怪 / 鬼魂 / 比喻兇猛的人"
+    "chinese": "妖魔 / 鬼怪 / 鬼魂"
   },
   {
     "hiragana": "おもいきり",
@@ -445,7 +445,7 @@
   {
     "hiragana": "かたまり",
     "japanese": "塊",
-    "chinese": "塊 / 堆 / 群 / 形容人某種特質整個非常強烈與極端"
+    "chinese": "塊 / 堆 / 群 / 形容人某種特質強烈與極端"
   },
   {
     "hiragana": "かっこ",
@@ -460,7 +460,7 @@
   {
     "hiragana": "かつよう",
     "japanese": "活用",
-    "chinese": "活用 / 充分利用 / 詞尾變化"
+    "chinese": "活用 / 詞尾變化"
   },
   {
     "hiragana": "かつりょく",
@@ -525,7 +525,7 @@
   {
     "hiragana": "から",
     "japanese": "殻",
-    "chinese": "外殼 / 空殼 / 蛻皮 / 脫殼"
+    "chinese": "外殼"
   },
   {
     "hiragana": "から",
@@ -560,7 +560,7 @@
   {
     "hiragana": "かん",
     "japanese": "勘",
-    "chinese": "直覺 / 第六感"
+    "chinese": "直覺"
   },
   {
     "hiragana": "かんきゃく",
@@ -570,22 +570,22 @@
   {
     "hiragana": "かんげき",
     "japanese": "感激",
-    "chinese": "感激 / 感動"
+    "chinese": "感激"
   },
   {
     "hiragana": "かんしょう",
     "japanese": "鑑賞",
-    "chinese": "鑑賞 / 欣賞"
+    "chinese": "鑑賞"
   },
   {
     "hiragana": "かんじゃ",
     "japanese": "患者",
-    "chinese": "患者 / 病患 / 病人"
+    "chinese": "患者"
   },
   {
     "hiragana": "かんじょう",
     "japanese": "勘定",
-    "chinese": "計算 / 算帳 / 付帳 / 考量"
+    "chinese": "計算 / 算帳 / 考量"
   },
   {
     "hiragana": "かんそう",
@@ -670,12 +670,12 @@
   {
     "hiragana": "がくりょく",
     "japanese": "学力",
-    "chinese": "學力 / 學業能力"
+    "chinese": "學業能力"
   },
   {
     "hiragana": "がら",
     "japanese": "柄",
-    "chinese": "花樣 / 花紋 / 體格 / 身材 / 品格 / 人品 / 性格"
+    "chinese": "花樣 / 花紋 / 體格 / 身材 / 品格"
   },
   {
     "hiragana": "がんじつ",
@@ -740,17 +740,17 @@
   {
     "hiragana": "きじゅん",
     "japanese": "規準",
-    "chinese": "規範 / 標準"
+    "chinese": "規範"
   },
   {
     "hiragana": "きじゅん",
     "japanese": "基準",
-    "chinese": "基準 / 標準"
+    "chinese": "基準"
   },
   {
     "hiragana": "きそ",
     "japanese": "基礎",
-    "chinese": "基礎 / 根基"
+    "chinese": "基礎"
   },
   {
     "hiragana": "きたい",
@@ -805,12 +805,12 @@
   {
     "hiragana": "みせや",
     "japanese": "店屋",
-    "chinese": "店鋪 / 商店"
+    "chinese": "店鋪"
   },
   {
     "hiragana": "みちじゅん",
     "japanese": "道順",
-    "chinese": "順道 / 順路"
+    "chinese": "順道"
   },
   {
     "hiragana": "みぶん",
@@ -820,7 +820,7 @@
   {
     "hiragana": "みまん",
     "japanese": "未満",
-    "chinese": "未滿 / 不足"
+    "chinese": "未滿"
   },
   {
     "hiragana": "みょうじ",
@@ -880,7 +880,7 @@
   {
     "hiragana": "めい",
     "japanese": "姪",
-    "chinese": "姪女 / 外甥女"
+    "chinese": "姪女"
   },
   {
     "hiragana": "めいさく",
@@ -900,7 +900,7 @@
   {
     "hiragana": "めうえ",
     "japanese": "目上",
-    "chinese": "上級 / 上司 / 長輩"
+    "chinese": "上級 / 長輩"
   },
   {
     "hiragana": "めざまし",
@@ -910,7 +910,7 @@
   {
     "hiragana": "めした",
     "japanese": "目下",
-    "chinese": "下屬 / 部下 / 晚輩 / 後輩"
+    "chinese": "下屬 / 晚輩 / 後輩"
   },
   {
     "hiragana": "めじるし",
@@ -1075,7 +1075,7 @@
   {
     "hiragana": "やっきょく",
     "japanese": "薬局",
-    "chinese": "藥房 / 藥局"
+    "chinese": "藥局"
   },
   {
     "hiragana": "やど",

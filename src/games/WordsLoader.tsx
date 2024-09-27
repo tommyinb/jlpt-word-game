@@ -11,6 +11,9 @@ import { WordLevel } from "../settings/wordLevel";
 import { WordType } from "../settings/wordType";
 import { File } from "../words/file";
 
+const N1NounLoader = lazy(() => import("../words/N1NounLoader"));
+const N1VerbLoader = lazy(() => import("../words/N1VerbLoader"));
+
 const N2AdjectiveLoader = lazy(() => import("../words/N2AdjectiveLoader"));
 const N2NounLoader = lazy(() => import("../words/N2NounLoader"));
 const N2AdverbLoader = lazy(() => import("../words/N2AdverbLoader"));
@@ -32,6 +35,13 @@ export function WordsLoader({ setFiles }: Props) {
 
   return (
     <Suspense>
+      {active(WordLevel.N1, WordType.Noun) && (
+        <N1NounLoader setFiles={setFiles} />
+      )}
+      {active(WordLevel.N1, WordType.Verb) && (
+        <N1VerbLoader setFiles={setFiles} />
+      )}
+
       {active(WordLevel.N2, WordType.Adjective) && (
         <N2AdjectiveLoader setFiles={setFiles} />
       )}
