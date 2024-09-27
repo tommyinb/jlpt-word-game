@@ -13,6 +13,10 @@
     & .chinese {
       color: #cdb4db;
     }
+
+    & .chinese {
+      flex-shrink: 1;
+    }
   }
 
   @keyframes histories-Line-show {
