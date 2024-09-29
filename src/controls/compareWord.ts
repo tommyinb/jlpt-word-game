@@ -16,12 +16,26 @@ export function compareWord(leftWord: Word, rightWord: Word) {
   return Math.sign(leftHiragana.length - rightHiragana.length);
 }
 
-function compareLetter(leftLetter: string, rightLetter: string) {
-  const letters =
-    "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
+const orderedLetters =
+  "あいうえお" +
+  "かきくけこ" +
+  "がぎぐげご" +
+  "さしすせそ" +
+  "ざじずぜぞ" +
+  "たちつてと" +
+  "だぢづでど" +
+  "なにぬねの" +
+  "はひふへほ" +
+  "ばびぶべぼ" +
+  "ぱぴぷぺぽ" +
+  "まみむめも" +
+  "やゆよ" +
+  "らりるれろ" +
+  "わをん";
 
-  const leftIndex = letters.indexOf(leftLetter);
-  const rightIndex = letters.indexOf(rightLetter);
+function compareLetter(leftLetter: string, rightLetter: string) {
+  const leftIndex = orderedLetters.indexOf(leftLetter);
+  const rightIndex = orderedLetters.indexOf(rightLetter);
 
   return Math.sign(leftIndex - rightIndex);
 }
