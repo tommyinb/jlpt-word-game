@@ -2,9 +2,9 @@ import { ReactNode, useContext, useMemo, useState } from "react";
 import { Hint } from "../settings/hint";
 import { SettingContext } from "../settings/SettingContext";
 import { Word } from "../words/word";
+import { WordsLoader } from "../words/WordsLoader";
 import { GameContext } from "./GameContext";
 import { useCurrentWord } from "./useCurrentWord";
-import { WordsLoader } from "./WordsLoader";
 
 export function Game({ children }: Props) {
   const { currentWord, saveCurrentWord } = useCurrentWord();

@@ -7,24 +7,24 @@ import {
   useState,
 } from "react";
 import { compareWord } from "../controls/compareWord";
+import { GameContext } from "../games/GameContext";
 import { SettingContext } from "../settings/SettingContext";
 import { WordLevel } from "../settings/wordLevel";
 import { WordType } from "../settings/wordType";
-import { Word } from "../words/word";
-import { GameContext } from "./GameContext";
+import { Word } from "./word";
 
-const N1NounLoader = lazy(() => import("../words/N1NounLoader"));
-const N1VerbLoader = lazy(() => import("../words/N1VerbLoader"));
+const N1NounLoader = lazy(() => import("./N1NounLoader"));
+const N1VerbLoader = lazy(() => import("./N1VerbLoader"));
 
-const N2AdjectiveLoader = lazy(() => import("../words/N2AdjectiveLoader"));
-const N2NounLoader = lazy(() => import("../words/N2NounLoader"));
-const N2AdverbLoader = lazy(() => import("../words/N2AdverbLoader"));
-const N2VerbLoader = lazy(() => import("../words/N2VerbLoader"));
+const N2AdjectiveLoader = lazy(() => import("./N2AdjectiveLoader"));
+const N2NounLoader = lazy(() => import("./N2NounLoader"));
+const N2AdverbLoader = lazy(() => import("./N2AdverbLoader"));
+const N2VerbLoader = lazy(() => import("./N2VerbLoader"));
 
-const N5AdjectiveLoader = lazy(() => import("../words/N5AdjectiveLoader"));
-const N5AdverbLoader = lazy(() => import("../words/N5AdverbLoader"));
-const N5NounLoader = lazy(() => import("../words/N5NounLoader"));
-const N5VerbLoader = lazy(() => import("../words/N5VerbLoader"));
+const N5AdjectiveLoader = lazy(() => import("./N5AdjectiveLoader"));
+const N5AdverbLoader = lazy(() => import("./N5AdverbLoader"));
+const N5NounLoader = lazy(() => import("./N5NounLoader"));
+const N5VerbLoader = lazy(() => import("./N5VerbLoader"));
 
 export function WordsLoader() {
   const { words } = useContext(SettingContext);
