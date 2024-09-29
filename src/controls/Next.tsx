@@ -29,6 +29,14 @@ export function Next() {
     return allWords.filter((word) => !oldWordsSet.has(word));
   }, [allWords, oldWords]);
 
+  const nextWords = useMemo(() => {
+    const nextWords = newWords.filter(
+      (newWord) => compareWord(newWord, currentWord) > 0
+    );
+
+    return nextWords.length > 0 ? nextWords : newWords;
+  }, [currentWord, newWords]);
+
   return (
     <div
       className={`controls-Next ${currentShown ? "active" : ""} ${
@@ -40,22 +48,10 @@ export function Next() {
         }
 
         if (currentShown) {
-          const nextCandidates = (function () {
-            const nextCandidates = newWords.filter(
-              (newWord) => compareWord(newWord, currentWord) > 0
-            );
-
-            if (nextCandidates.length <= 0) {
-              return newWords;
-            }
-
-            return nextCandidates;
-          })();
-
           const nextWord =
-            nextCandidates[
+            nextWords[
               order === Order.Random
-                ? Math.floor(Math.random() * nextCandidates.length)
+                ? Math.floor(Math.random() * nextWords.length)
                 : 0
             ];
 

@@ -1,3 +1,10 @@
+import { WordLevel } from "../settings/wordLevel";
+import { WordType } from "../settings/wordType";
 import { Word } from "./word";
 
-export type File = Word[];
+export interface File {
+  level: WordLevel;
+  type: WordType;
+
+  words: Word[];
+}

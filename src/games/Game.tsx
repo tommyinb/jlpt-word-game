@@ -1,7 +1,6 @@
 import { ReactNode, useContext, useMemo, useState } from "react";
 import { Hint } from "../settings/hint";
 import { SettingContext } from "../settings/SettingContext";
-import { File } from "../words/file";
 import { Word } from "../words/word";
 import { GameContext } from "./GameContext";
 import { useCurrentWord } from "./useCurrentWord";
@@ -19,32 +18,29 @@ export function Game({ children }: Props) {
       hints.includes(Hint.Meaning)
   );
 
-  const [files, setFiles] = useState<File[]>([]);
-  const allWords = useMemo(() => files.flatMap((file) => file).sort(), [files]);
-
+  const [allWords, setAllWords] = useState<Word[]>([]);
   const [oldWords, setOldWords] = useState<Word[]>([]);
 
   return (
-    <>
-      <GameContext.Provider
-        value={useMemo(
-          () => ({
-            currentWord,
-            setCurrentWord: saveCurrentWord,
-            currentShown,
-            setCurrentShown,
-            allWords,
-            oldWords,
-            setOldWords,
-          }),
-          [allWords, currentShown, currentWord, oldWords, saveCurrentWord]
-        )}
-      >
-        {children}
-      </GameContext.Provider>
+    <GameContext.Provider
+      value={useMemo(
+        () => ({
+          currentWord,
+          setCurrentWord: saveCurrentWord,
+          currentShown,
+          setCurrentShown,
+          allWords,
+          setAllWords,
+          oldWords,
+          setOldWords,
+        }),
+        [allWords, currentShown, currentWord, oldWords, saveCurrentWord]
+      )}
+    >
+      {children}
 
-      <WordsLoader setFiles={setFiles} />
-    </>
+      <WordsLoader />
+    </GameContext.Provider>
   );
 }
 

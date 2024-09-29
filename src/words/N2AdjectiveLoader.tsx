@@ -1,12 +1,18 @@
-import { Dispatch, SetStateAction } from "react";
-import { FileLoader } from "./FileLoader";
-import { File } from "./file";
-import file from "./n2-adjectives.json" assert { type: "json" };
+import { useEffect } from "react";
+import { WordLevel } from "../settings/wordLevel";
+import { WordType } from "../settings/wordType";
+import words from "./n2-adjectives.json" assert { type: "json" };
+import { Word } from "./word";
 
-export default function N2AdjectiveLoader({ setFiles }: Props) {
-  return <FileLoader setFiles={setFiles} file={file} />;
+export default function N2AdjectiveLoader({ addWords }: Props) {
+  useEffect(
+    () => addWords(WordLevel.N2, WordType.Adjective, words),
+    [addWords]
+  );
+
+  return <></>;
 }
 
 interface Props {
-  setFiles: Dispatch<SetStateAction<File[]>>;
+  addWords: (level: WordLevel, type: WordType, words: Word[]) => void;
 }

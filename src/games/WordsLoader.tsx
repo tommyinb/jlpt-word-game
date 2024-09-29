@@ -1,15 +1,17 @@
 import {
-  Dispatch,
   lazy,
-  SetStateAction,
   Suspense,
   useCallback,
   useContext,
+  useEffect,
+  useState,
 } from "react";
+import { compareWord } from "../controls/compareWord";
 import { SettingContext } from "../settings/SettingContext";
 import { WordLevel } from "../settings/wordLevel";
 import { WordType } from "../settings/wordType";
-import { File } from "../words/file";
+import { Word } from "../words/word";
+import { GameContext } from "./GameContext";
 
 const N1NounLoader = lazy(() => import("../words/N1NounLoader"));
 const N1VerbLoader = lazy(() => import("../words/N1VerbLoader"));
@@ -24,53 +26,84 @@ const N5AdverbLoader = lazy(() => import("../words/N5AdverbLoader"));
 const N5NounLoader = lazy(() => import("../words/N5NounLoader"));
 const N5VerbLoader = lazy(() => import("../words/N5VerbLoader"));
 
-export function WordsLoader({ setFiles }: Props) {
+export function WordsLoader() {
   const { words } = useContext(SettingContext);
-
   const active = useCallback(
     (level: WordLevel, type: WordType) =>
       !!words.find((word) => word.level === level && word.type === type),
     [words]
   );
 
+  const [batches, setBatches] = useState<Batch[]>([]);
+  const addWords = useCallback(
+    (level: WordLevel, type: WordType, words: Word[]) =>
+      setBatches((results) => {
+        const oldResult = results.find(
+          (result) => result.level === level && result.type === type
+        );
+
+        return oldResult ? results : [...results, { level, type, words }];
+      }),
+    []
+  );
+
+  const { setAllWords } = useContext(GameContext);
+  useEffect(
+    () =>
+      setAllWords(
+        batches
+          .filter((batch) =>
+            words.some(
+              (word) => word.level === batch.level && word.type === batch.type
+            )
+          )
+          .flatMap((batch) => batch.words)
+          .sort(compareWord)
+      ),
+    [batches, setAllWords, words]
+  );
+
   return (
     <Suspense>
       {active(WordLevel.N1, WordType.Noun) && (
-        <N1NounLoader setFiles={setFiles} />
+        <N1NounLoader addWords={addWords} />
       )}
       {active(WordLevel.N1, WordType.Verb) && (
-        <N1VerbLoader setFiles={setFiles} />
+        <N1VerbLoader addWords={addWords} />
       )}
 
       {active(WordLevel.N2, WordType.Adjective) && (
-        <N2AdjectiveLoader setFiles={setFiles} />
+        <N2AdjectiveLoader addWords={addWords} />
       )}
       {active(WordLevel.N2, WordType.Adverb) && (
-        <N2AdverbLoader setFiles={setFiles} />
+        <N2AdverbLoader addWords={addWords} />
       )}
       {active(WordLevel.N2, WordType.Noun) && (
-        <N2NounLoader setFiles={setFiles} />
+        <N2NounLoader addWords={addWords} />
       )}
       {active(WordLevel.N2, WordType.Verb) && (
-        <N2VerbLoader setFiles={setFiles} />
+        <N2VerbLoader addWords={addWords} />
       )}
 
       {active(WordLevel.N5, WordType.Adjective) && (
-        <N5AdjectiveLoader setFiles={setFiles} />
+        <N5AdjectiveLoader addWords={addWords} />
       )}
       {active(WordLevel.N5, WordType.Adverb) && (
-        <N5AdverbLoader setFiles={setFiles} />
+        <N5AdverbLoader addWords={addWords} />
       )}
       {active(WordLevel.N5, WordType.Noun) && (
-        <N5NounLoader setFiles={setFiles} />
+        <N5NounLoader addWords={addWords} />
       )}
       {active(WordLevel.N5, WordType.Verb) && (
-        <N5VerbLoader setFiles={setFiles} />
+        <N5VerbLoader addWords={addWords} />
       )}
     </Suspense>
   );
 }
 
-interface Props {
-  setFiles: Dispatch<SetStateAction<File[]>>;
+interface Batch {
+  level: WordLevel;
+  type: WordType;
+
+  words: Word[];
 }
