@@ -24,46 +24,50 @@ export function Next() {
     order,
   } = useContext(SettingContext);
 
-  const newWords = useMemo(() => {
+  const nextWord = useMemo(() => {
     const oldWordsSet = new Set(oldWords);
-    return allWords.filter((word) => !oldWordsSet.has(word));
-  }, [allWords, oldWords]);
 
-  const nextWords = useMemo(() => {
-    const nextWords = newWords.filter(
-      (newWord) => compareWord(newWord, currentWord) > 0
-    );
+    const newWords = allWords
+      .filter((word) => !oldWordsSet.has(word))
+      .filter((word) => word !== currentWord);
 
-    return nextWords.length > 0 ? nextWords : newWords;
-  }, [currentWord, newWords]);
+    if (newWords.length <= 0) {
+      return undefined;
+    }
+
+    if (order === Order.Random) {
+      const index = Math.floor(Math.random() * newWords.length);
+      return newWords[index];
+    } else {
+      const nextWords = newWords.filter(
+        (newWord) => compareWord(newWord, currentWord) > 0
+      );
+      if (nextWords.length > 0) {
+        return nextWords[0];
+      } else {
+        return newWords[0];
+      }
+    }
+  }, [allWords, currentWord, oldWords, order]);
 
   return (
     <div
       className={`controls-Next ${currentShown ? "active" : ""} ${
-        newWords.length <= 0 ? "disabled" : ""
+        currentShown && !nextWord ? "disabled" : ""
       }`}
       onClick={() => {
-        if (newWords.length <= 0) {
-          return;
-        }
-
         if (currentShown) {
-          const nextWord =
-            nextWords[
-              order === Order.Random
-                ? Math.floor(Math.random() * nextWords.length)
-                : 0
-            ];
+          if (nextWord) {
+            setCurrentWord(nextWord);
 
-          setCurrentWord(nextWord);
+            setCurrentShown(
+              (hints.includes(Hint.Kanji) || !nextWord.hiragana) &&
+                hints.includes(Hint.Hiragana) &&
+                hints.includes(Hint.Meaning)
+            );
 
-          setCurrentShown(
-            (hints.includes(Hint.Kanji) || !nextWord.hiragana) &&
-              hints.includes(Hint.Hiragana) &&
-              hints.includes(Hint.Meaning)
-          );
-
-          setOldWords([...oldWords, currentWord]);
+            setOldWords([...oldWords, currentWord]);
+          }
         } else {
           setCurrentShown(true);
         }
@@ -73,7 +77,7 @@ export function Next() {
         }
       }}
     >
-      {allWords.length <= 0 || newWords.length > 0 ? "次へ" : "終わり"}
+      {allWords.length <= 0 || nextWord ? "次へ" : "終わり"}
     </div>
   );
 }
