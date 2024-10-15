@@ -1,13 +1,18 @@
 .histories-Line {
   display: grid;
   overflow: hidden;
+  justify-content: center;
   animation: histories-Line-show 0.3s both;
 
   & .content {
     min-height: 0;
+    border-bottom: 1px solid transparent;
+    padding-left: 6px;
+    padding-right: 6px;
     display: flex;
     justify-content: center;
     gap: 10px;
+    transition: 0.5s;
 
     & .japanese,
     & .chinese {
@@ -16,6 +21,10 @@
 
     & .hiragana {
       flex-shrink: 0;
+    }
+
+    &.active {
+      border-bottom: 1px solid #cdb4db;
     }
   }
 

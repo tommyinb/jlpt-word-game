@@ -1,7 +1,9 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { createContext, Dispatch, RefObject, SetStateAction } from "react";
 import { Word } from "../words/word";
 
 export const GameContext = createContext<{
+  deskRef: RefObject<HTMLDivElement>;
+
   currentWord: Word;
   setCurrentWord: Dispatch<SetStateAction<Word>>;
 
@@ -14,6 +16,8 @@ export const GameContext = createContext<{
   oldWords: Word[];
   setOldWords: Dispatch<SetStateAction<Word[]>>;
 }>({
+  deskRef: { current: null },
+
   currentWord: {
     hiragana: "あいする",
     japanese: "愛する",

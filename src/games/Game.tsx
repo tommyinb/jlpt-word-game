@@ -1,4 +1,4 @@
-import { ReactNode, useContext, useMemo, useState } from "react";
+import { ReactNode, useContext, useMemo, useRef, useState } from "react";
 import { Hint } from "../settings/hint";
 import { SettingContext } from "../settings/SettingContext";
 import { Word } from "../words/word";
@@ -7,6 +7,8 @@ import { GameContext } from "./GameContext";
 import { useCurrentWord } from "./useCurrentWord";
 
 export function Game({ children }: Props) {
+  const deskRef = useRef<HTMLDivElement>(null);
+
   const { currentWord, saveCurrentWord } = useCurrentWord();
 
   const { hints } = useContext(SettingContext);
@@ -25,6 +27,7 @@ export function Game({ children }: Props) {
     <GameContext.Provider
       value={useMemo(
         () => ({
+          deskRef,
           currentWord,
           setCurrentWord: saveCurrentWord,
           currentShown,
